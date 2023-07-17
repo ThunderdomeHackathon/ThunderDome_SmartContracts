@@ -1,27 +1,31 @@
-# Algorand Developer Workshop
+# Project Smart Contracts
 
-## About
-A set of Tealish smart contracts and corresponding tests intended for the FinHub Workshop Series.
+This repository contains the smart contracts developed for the Project Smart Contracts. Two different smart contracts were written and deployed for this project: `voting_system.tl` and `voting_system_v2.tl`.
 
-## Getting Started
-1. Make sure you have a [GitHub account](https://github.com/join).
-2. Log into [GitPod](https://www.gitpod.io/) by using your GitHub credentials.
-    1. Choose VS Code **BROWSER** as the default editor.
-    2. If it pops up, fill out the "Tell us more about you" form.
-3. On the dashboard, click the "New Workspace" button and copy/paste [https://github.com/FinHubSA/AlgorandDevWorkshop](https://github.com/FinHubSA/AlgorandDevWorkshop) as the Context URL.
-    1. Keep the default settings (VS Code browser editor and standard class CPU).
- 4. Wait for the workspace to be set up.
-    1. You may safely close all the welcome panels.
- 5. There is a `tealish-0.0.1.vsix` VS Code extension in the project root - install it by right clicking it on the file explorer to the left of the editor and selecting "Install Extension VSIX".
+## `voting_system.tl`
 
-### Notes
-*  Do not stop the Algorand Indexer process running in a terminal tab unless you know what you're doing.
-*  Do not delete `.venv` unless you know what you're doing.
-*  While this GitPod setup is great to get into smart contract development quickly, it is recommended that you set up a local environment on your computer for prolonged learning. Take a look at the [Sandbox](https://github.com/algorand/sandbox) or, alternatively, [AlgoKit](https://github.com/algorandfoundation/algokit-cli).
+- **app_id**: 258474216
+- **Implementation Method**: Used boxes to store election details on the app, candidate details, and voter details. Votes were cast by incrementing the count in each candidate box.
+- **Source Code**: `contracts/voting_system.tl`
 
-## Testing
-1. Compile your Tealish smart contracts in the `contracts` folder by running `tealish compile contracts` in the terminal at the project root directory (`/workspace/AlgorandDevWorkshop`).
-2. Run `pytest` in the project root directory to run all the tests in the `tests` folder.
+## `voting_system_v2.tl`
 
-## Acknowledgements
-Thank you to [Joe Polny](https://github.com/joe-p) for the Docker image and GitPod setup.
+- **app_id**: 258473431
+- **Implementation Method**: Created a vote asset for each election, then transferred the vote asset from the voter to the candidate account during the election to make a vote.
+- **Source Code**: `contracts/voting_system_v2.tl`
+
+## Final Implementation for Hackathon
+
+The final implementation for the hackathon involved a version 2 style implementation. It made calls to the testnet from the backend to create vote assets and transfer them between custodial accounts for voting. The code for this implementation can be found in the Thunderdome Backend repository under `blockchain_client/`. Our next step, as discussed in our pitch deck, would be to use the `voting_system_v2` smart contract to create an engine for voting on the blockchain ledger.
+
+## Deployment
+
+The deployment of the smart contracts was done using the script `util/voting_system_deploy.py`. This script was used to deploy the smart contracts and set up the necessary configurations.
+
+## Languages and Dependencies
+
+The smart contracts were written using **Tealish**, a programming language for writing smart contracts on the Algorand blockchain. The Tealish code was compiled to Teal bytecode and deployed and called using the **AlgoSDK** functions.
+
+Dependencies:
+- Tealish
+- AlgoSDK
